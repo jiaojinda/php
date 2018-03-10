@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="1.png" onclick="demo(this);">
+<img src="2.png" onclick="demo(this);">
+<img src="3.png" onclick="demo(this);">
+<img src="4.png" onclick="demo(this);">
+<script>
+    function demo(t) {
+        var i = document.getElementsByTagName("img");
+        for(var a=0;a<i.length;a++){
+            i[a].removeAttribute("height");
+        }
+        t.setAttribute("height","300");
+    }
+</script>
+</body>
+</html>

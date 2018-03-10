@@ -1,0 +1,33 @@
+Java定义函数有
+function 方法名(不需要执指定类型)  function myTest(a,b,c,d){ }  function myTest(a,b,c,d){ return a; }
+有名函数  -- 定义式    先调用后定义
+myTest();
+<script>
+myTest();
+function myTest(a,b,c,d){ alert(1) }
+myTest();
+function myTest(a,b,c,d){ alert(2)}
+myTest();
+function myTest(a,b,c,d){alert(3) }
+myTest();
+function myTest(a,b,c,d){alert(4) }
+myTest();
+<script>
+
+a();//错误
+var a = function(){
+    alert(1);
+}
+a();
+var a = function(){
+    alert(2);
+}
+a();
+var a = function(){
+    alert(3);
+}
+a();
+匿名函数  -- 变量式  先定义后调用
+
+定义方式:
+new Function();//方式拔高

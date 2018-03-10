@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        input{
+            width: 50px;
+            height: auto;
+        }
+
+    </style>
+
+</head>
+<body>
+    <table border="1">
+        <thead><h1>秒表</h1></thead>
+        <tbody id="tb">
+            <tr align="center"><td colspan="3"><input type="text" id="m" value="00" >:<input type="text" id="s" value="00">:<input type="text" id="ms" value="00"></td></tr>
+            <tr>
+                <td><button id="go" onclick="init();go();changeOther(1);">开始</button></td>
+
+                <td><button onclick="show();">计次</button></td>
+
+                <td><button onclick="reset();">复位</button></td>
+            </tr>
+            <tr id="food" align="center">
+                <td colspan="3">&copy矫金达</td>
+            </tr>
+        <tr></tr>
+        </tbody>
+    </table>
+
+<script>
+    var flag = true;
+    var n = 0;
+    function init() {
+        flag = false;
+    }
+    function go() {
+        var ms = document.getElementById("ms");
+        var msnum = parseInt(ms.value);
+        if(flag){
+
+            return;
+
+        }
+        if(++msnum==60){
+            msnum = 0;
+            var s = document.getElementById("s");
+            var snum = parseInt(s.value);
+
+            if(++snum==60){
+                snum = 0;
+                var m = document.getElementById("m");
+                var mnum = parseInt(m.value);
+                m.value=++mnum<10?'0'+mnum:mnum;
+            }
+            s.value=snum<10?'0'+snum:snum;
+
+        }
+
+        ms.value=msnum<10?'0'+msnum:msnum;
+
+        setTimeout("go()",16);
+
+    }
+    function stop() {
+        flag = true;
+    }
+    function changeOther(m) {
+        var go = document.getElementById("go");
+        if(m==1){
+            go.innerText = "暂停";
+            go.setAttribute("onclick","stop();changeOther(2);");
+        }else if(m==2){
+            go.innerText = "继续";
+            go.setAttribute("onclick","init();go();changeOther(1);");
+        }else{
+            alert("发生未知错误");
+        }
+    }
+    function reset() {
+        flag = true;
+        var go = document.getElementById("go");
+        go.innerText = "开始";
+        go.setAttribute("onclick","init();go();changeOther(1);");
+        var i = document.getElementsByTagName("input");
+        for(var a=0;a<i.length;a++){
+            i[a].value="00";
+        }
+        var t = document.getElementsByTagName("tr");
+        for(var i=0;i<t.length;){
+            if(i>2){
+                t[i].remove();
+            }else{
+                i++;
+            }
+        }
+        n=0;
+
+    }
+    function show() {
+        var tb = document.getElementById("tb");
+        var food = document.getElementById("food");
+        var item = document.createElement("tr");
+        var td = document.createElement("td");
+
+        td.setAttribute("colspan",3);
+        if(flag){
+            alert("请先开始计时");
+            return;
+        }
+
+
+        td.innerHTML="第"+(++n<10?"0"+n:n)+"次记录："+document.getElementById("m").value+":"+document.getElementById("s").value+":"+document.getElementById("ms").value;
+        item.appendChild(td);
+
+        tb.insertBefore(item,food.nextElementSibling)
+    }
+</script>
+</body>
+</html>

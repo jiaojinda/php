@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div" align="left" style="background-color: #00b3ff;width:700px" ><img src="5.jpg" id="img" width="100" onclick="demo(1);"></div>
+
+<script>
+    function demo(m) {
+        var img = document.getElementById("img");
+        var div = document.getElementById("div");
+        switch (m){
+            case 1:
+                div.setAttribute("align","center");
+                img.setAttribute("onclick","demo(2)");
+                return;
+            case 2:
+                div.setAttribute("align","right");
+                img.setAttribute("onclick","demo(3)");
+                return;
+            case 3:
+                div.setAttribute("align","left");
+                img.setAttribute("onclick","demo(1)");
+                return;
+        }
+
+    }
+</script>
+</body>
+</html>

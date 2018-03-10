@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select2</title>
+    <style type="text/css">
+        .selectw{
+            width: 100px; height: 200px;
+        }
+    </style>
+</head>
+<body onload="select2.init();">
+<table>
+    <tr><td>未选:</td><td></td><td>已选:</td></tr>
+    <tr>
+        <td>
+            <!--请勿在option中写ondblclick事件，会被后台js覆盖-->
+            <select name="select1" id="select1" multiple="multiple" class="selectw">
+                <option value="1">a</option>
+                <option value="2">b</option>
+                <option value="3">c</option>
+                <option value="4">d</option>
+            </select>
+        </td>
+        <td>
+            <a onclick="select2.anyGoOther(1)"><h1>&gt;</h1></a>
+            <a onclick="select2.anyGoOther(2)"><h1>&lt;</h1></a>
+        </td>
+        <td>
+            <!--请勿在option中写ondblclick事件，会被后台js覆盖-->
+            <select name="select2" id="select2"  multiple="multiple" class="selectw">
+                <option value="3">e</option>
+                <option value="4">f</option>
+                <option value="5">g</option>
+                <option value="6">h</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" align="center"><button onclick="select2.showInfo();">显示数据且全选</button></td>
+    </tr>
+
+</table>
+
+
+
+<script type="text/javascript" src="select2.js"></script>
+
+</body>
+</html>
